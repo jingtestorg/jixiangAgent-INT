@@ -1,0 +1,52 @@
+{
+  "summary": {
+    "total": 111,
+    "passed": 111,
+    "failed": 0,
+    "score": 100.0
+  },
+  "sections": [
+    {
+      "name": "Structure Tests",
+      "marker": "structure",
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "score": 0.0,
+      "tests": []
+    },
+    {
+      "name": "Server Tests",
+      "marker": "server",
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "score": 100.0,
+      "tests": [
+        {"name": "test_server_starts", "outcome": "passed", "duration": 5.0},
+        {"name": "test_agent_card_endpoint", "outcome": "passed", "duration": 1.0}
+      ]
+    },
+    {
+      "name": "Agent Tests",
+      "marker": "agent_tests",
+      "total": 109,
+      "passed": 109,
+      "failed": 0,
+      "skipped": 0,
+      "score": 100.0,
+      "coverage": 77.0,
+      "tests": [
+        {"name": "test_agent_returns_hello_world", "outcome": "passed", "duration": 0.12},
+        {"name": "test_agent_stream_yields_working_status", "outcome": "passed", "duration": 0.11},
+        {"name": "test_agent_responds_to_any_input", "outcome": "passed", "duration": 0.35},
+        {"name": "test_agent_handles_errors_gracefully", "outcome": "passed", "duration": 0.10},
+        {"name": "test_system_prompt_contains_hello_world", "outcome": "passed", "duration": 0.01},
+        {"name": "test_agent_invoke_returns_completed_status", "outcome": "passed", "duration": 0.11},
+        {"name": "test_end_to_end_hello_world_flow", "outcome": "passed", "duration": 0.12}
+      ]
+    }
+  ]
+}

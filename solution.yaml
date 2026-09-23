@@ -1,0 +1,10 @@
+apiVersion: solution.sap/v1
+kind: Solution
+
+metadata:
+  name: hello-world-df0d2
+  version: 1.0.0
+  description: A minimal AI agent that responds with Hello World to any input.
+
+assets:
+  - ref: ./assets/hello-world-agent/asset.yaml
