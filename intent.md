@@ -1,4 +1,4 @@
-# Cost Center NL Query Agent
+# Cost Center NL Query Agent2.0
 
 AI agent enabling Finance Controllers to query SAP S/4HANA cost center data via natural language.
 
