@@ -1,0 +1,371 @@
+{
+  "servers": {
+    "sap-s4-ce-costcenter-0001": {
+      "mcp_server_name": "sap.mcp/sap_self",
+      "description": "MCP server for the SAP S/4HANA Cost Center OData service (CE_COSTCENTER_0001).",
+      "tools": {
+        "get_metadata_sap_self": {
+          "description": "Get metadata of the OData service with optional filtering to reduce token consumption. Returns the metadata in XML format, which can be used to discover available entities and their properties.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "filter": {
+                "type": "string",
+                "description": "Optional filter to reduce metadata size"
+              }
+            },
+            "required": []
+          },
+          "mock_response": "<?xml version=\"1.0\" encoding=\"utf-8\"?><edmx:Edmx Version=\"4.0\" xmlns:edmx=\"http://docs.oasis-open.org/odata/ns/edmx\"><edmx:DataServices><Schema Namespace=\"sap.self\" xmlns=\"http://docs.oasis-open.org/odata/ns/edm\"><EntityType Name=\"CostCenter_Type\"><Key><PropertyRef Name=\"CostCenter\"/><PropertyRef Name=\"ControllingArea\"/><PropertyRef Name=\"ValidityEndDate\"/></Key><Property Name=\"CostCenter\" Type=\"Edm.String\" MaxLength=\"10\"/><Property Name=\"ControllingArea\" Type=\"Edm.String\" MaxLength=\"4\"/><Property Name=\"ValidityEndDate\" Type=\"Edm.DateTimeOffset\"/><Property Name=\"CostCenterName\" Type=\"Edm.String\" MaxLength=\"20\"/><Property Name=\"CostCenterCategory\" Type=\"Edm.String\" MaxLength=\"1\"/><Property Name=\"CompanyCode\" Type=\"Edm.String\" MaxLength=\"4\"/><Property Name=\"Currency\" Type=\"Edm.String\" MaxLength=\"5\"/></EntityType></Schema></edmx:DataServices></edmx:Edmx>"
+        },
+        "batch_for_sap_self": {
+          "description": "Execute multiple OData operations in a single batch request using the $batch endpoint.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "requests": {
+                "type": "array",
+                "description": "Array of individual OData requests to batch"
+              }
+            },
+            "required": ["requests"]
+          },
+          "mock_response": {
+            "responses": [
+              {
+                "status": 200,
+                "body": {
+                  "value": []
+                }
+              }
+            ]
+          }
+        },
+        "list_a_costcenter_2_for_sap_self": {
+          "description": "Retrieve a list of entities from the A_CostCenter_2 collection in the sap_self service.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "filter": {
+                "type": "string",
+                "description": "OData $filter expression"
+              },
+              "select": {
+                "type": "string",
+                "description": "Comma-separated list of properties to return"
+              },
+              "orderby": {
+                "type": "string",
+                "description": "OData $orderby expression"
+              },
+              "top": {
+                "type": "integer",
+                "description": "Maximum number of records to return"
+              },
+              "skip": {
+                "type": "integer",
+                "description": "Number of records to skip"
+              },
+              "expand": {
+                "type": "string",
+                "description": "Related entities to expand"
+              },
+              "count": {
+                "type": "boolean",
+                "description": "Include count in response"
+              }
+            },
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "CostCenter": "1000",
+                "ControllingArea": "A000",
+                "ValidityEndDate": "/Date(9999999999000)/",
+                "ValidityStartDate": "/Date(0)/",
+                "CostCenterName": "Corporate Finance",
+                "CostCenterCategory": "F",
+                "CompanyCode": "1000",
+                "Currency": "USD",
+                "ProfitCenter": "PC1000",
+                "FunctionalArea": "FA001",
+                "BusinessArea": "BA01",
+                "CostCenterStandardHierarchy": "H1"
+              },
+              {
+                "CostCenter": "2000",
+                "ControllingArea": "A000",
+                "ValidityEndDate": "/Date(9999999999000)/",
+                "ValidityStartDate": "/Date(0)/",
+                "CostCenterName": "Information Technology",
+                "CostCenterCategory": "A",
+                "CompanyCode": "1000",
+                "Currency": "USD",
+                "ProfitCenter": "PC2000",
+                "FunctionalArea": "FA002",
+                "BusinessArea": "BA02",
+                "CostCenterStandardHierarchy": "H1"
+              },
+              {
+                "CostCenter": "3000",
+                "ControllingArea": "A000",
+                "ValidityEndDate": "/Date(9999999999000)/",
+                "ValidityStartDate": "/Date(0)/",
+                "CostCenterName": "Human Resources",
+                "CostCenterCategory": "A",
+                "CompanyCode": "1000",
+                "Currency": "USD",
+                "ProfitCenter": "PC3000",
+                "FunctionalArea": "FA003",
+                "BusinessArea": "BA01",
+                "CostCenterStandardHierarchy": "H1"
+              },
+              {
+                "CostCenter": "4000",
+                "ControllingArea": "A000",
+                "ValidityEndDate": "/Date(9999999999000)/",
+                "ValidityStartDate": "/Date(0)/",
+                "CostCenterName": "Sales & Marketing",
+                "CostCenterCategory": "V",
+                "CompanyCode": "1000",
+                "Currency": "USD",
+                "ProfitCenter": "PC4000",
+                "FunctionalArea": "FA004",
+                "BusinessArea": "BA02",
+                "CostCenterStandardHierarchy": "H1"
+              },
+              {
+                "CostCenter": "5000",
+                "ControllingArea": "A000",
+                "ValidityEndDate": "/Date(9999999999000)/",
+                "ValidityStartDate": "/Date(0)/",
+                "CostCenterName": "Operations",
+                "CostCenterCategory": "P",
+                "CompanyCode": "1000",
+                "Currency": "USD",
+                "ProfitCenter": "PC5000",
+                "FunctionalArea": "FA005",
+                "BusinessArea": "BA03",
+                "CostCenterStandardHierarchy": "H1"
+              }
+            ]
+          }
+        },
+        "get_a_costcenter_2_for_sap_self": {
+          "description": "Retrieve a single entity by its key from the A_CostCenter_2 collection in the sap_self service.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "CostCenter": {
+                "type": "string",
+                "description": "Cost center identifier"
+              },
+              "ControllingArea": {
+                "type": "string",
+                "description": "Controlling area identifier"
+              },
+              "ValidityEndDate": {
+                "type": "string",
+                "description": "Validity end date of the cost center"
+              },
+              "select": {
+                "type": "string",
+                "description": "Properties to select"
+              },
+              "expand": {
+                "type": "string",
+                "description": "Related entities to expand"
+              }
+            },
+            "required": ["CostCenter", "ControllingArea", "ValidityEndDate"]
+          },
+          "mock_response": {
+            "CostCenter": "1000",
+            "ControllingArea": "A000",
+            "ValidityEndDate": "/Date(9999999999000)/",
+            "ValidityStartDate": "/Date(0)/",
+            "CostCenterName": "Corporate Finance",
+            "CostCenterCategory": "F",
+            "CompanyCode": "1000",
+            "Currency": "USD",
+            "ProfitCenter": "PC1000",
+            "FunctionalArea": "FA001",
+            "BusinessArea": "BA01",
+            "CostCenterStandardHierarchy": "H1"
+          }
+        },
+        "count_a_costcenter_2_for_sap_self": {
+          "description": "Get the total count of entities in the A_CostCenter_2 collection in the sap_self service.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "filter": {
+                "type": "string",
+                "description": "OData $filter expression to count matching entities"
+              }
+            },
+            "required": []
+          },
+          "mock_response": 142
+        },
+        "list_a_costcentertext_2_for_sap_self": {
+          "description": "Retrieve a list of entities from the A_CostCenterText_2 collection in the sap_self service.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "filter": { "type": "string", "description": "OData $filter expression" },
+              "select": { "type": "string", "description": "Properties to select" },
+              "orderby": { "type": "string", "description": "Sort order" },
+              "top": { "type": "integer", "description": "Max records" },
+              "skip": { "type": "integer", "description": "Records to skip" }
+            },
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "CostCenter": "1000",
+                "ControllingArea": "A000",
+                "ValidityEndDate": "/Date(9999999999000)/",
+                "Language": "EN",
+                "CostCenterName": "Corporate Finance",
+                "CostCenterDescription": "Corporate Finance Department"
+              },
+              {
+                "CostCenter": "2000",
+                "ControllingArea": "A000",
+                "ValidityEndDate": "/Date(9999999999000)/",
+                "Language": "EN",
+                "CostCenterName": "Information Technology",
+                "CostCenterDescription": "IT Department"
+              }
+            ]
+          }
+        },
+        "get_a_costcentertext_2_for_sap_self": {
+          "description": "Retrieve a single entity by its key from the A_CostCenterText_2 collection.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "CostCenter": { "type": "string", "description": "Cost center ID" },
+              "ControllingArea": { "type": "string", "description": "Controlling area" },
+              "ValidityEndDate": { "type": "string", "description": "Validity end date" },
+              "Language": { "type": "string", "description": "Language key" }
+            },
+            "required": ["CostCenter", "ControllingArea", "ValidityEndDate", "Language"]
+          },
+          "mock_response": {
+            "CostCenter": "1000",
+            "ControllingArea": "A000",
+            "ValidityEndDate": "/Date(9999999999000)/",
+            "Language": "EN",
+            "CostCenterName": "Corporate Finance",
+            "CostCenterDescription": "Corporate Finance Department"
+          }
+        },
+        "count_a_costcentertext_2_for_sap_self": {
+          "description": "Get the total count of entities in the A_CostCenterText_2 collection.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "filter": { "type": "string", "description": "OData $filter expression" }
+            },
+            "required": []
+          },
+          "mock_response": 284
+        },
+        "list_a_costcenter_2__costcentertext_for_sap_self": {
+          "description": "Retrieve cost center text entities via navigation from A_CostCenter_2.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "CostCenter": { "type": "string", "description": "Cost center ID" },
+              "ControllingArea": { "type": "string", "description": "Controlling area" },
+              "ValidityEndDate": { "type": "string", "description": "Validity end date" },
+              "filter": { "type": "string" },
+              "top": { "type": "integer" },
+              "skip": { "type": "integer" }
+            },
+            "required": ["CostCenter", "ControllingArea", "ValidityEndDate"]
+          },
+          "mock_response": {
+            "results": [
+              {
+                "Language": "EN",
+                "CostCenterName": "Corporate Finance",
+                "CostCenterDescription": "Corporate Finance Department"
+              }
+            ]
+          }
+        },
+        "get_a_costcenter_2__costcentertext_for_sap_self": {
+          "description": "Retrieve a single cost center text entity via navigation from A_CostCenter_2.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "CostCenter": { "type": "string" },
+              "ControllingArea": { "type": "string" },
+              "ValidityEndDate": { "type": "string" },
+              "Language": { "type": "string" }
+            },
+            "required": ["CostCenter", "ControllingArea", "ValidityEndDate", "Language"]
+          },
+          "mock_response": {
+            "Language": "EN",
+            "CostCenterName": "Corporate Finance",
+            "CostCenterDescription": "Corporate Finance Department"
+          }
+        },
+        "count_a_costcenter_2__costcentertext_for_sap_self": {
+          "description": "Count cost center text entities via navigation from A_CostCenter_2.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "CostCenter": { "type": "string" },
+              "ControllingArea": { "type": "string" },
+              "ValidityEndDate": { "type": "string" },
+              "filter": { "type": "string" }
+            },
+            "required": ["CostCenter", "ControllingArea", "ValidityEndDate"]
+          },
+          "mock_response": 2
+        },
+        "get__costcenter_in_a_costcentertext_2_for_sap_self": {
+          "description": "Navigate from A_CostCenterText_2 to the related CostCenter_Type entity.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "CostCenter": { "type": "string" },
+              "ControllingArea": { "type": "string" },
+              "ValidityEndDate": { "type": "string" },
+              "Language": { "type": "string" },
+              "select": { "type": "string" },
+              "expand": { "type": "string" }
+            },
+            "required": ["CostCenter", "ControllingArea", "ValidityEndDate", "Language"]
+          },
+          "mock_response": {
+            "CostCenter": "1000",
+            "ControllingArea": "A000",
+            "ValidityEndDate": "/Date(9999999999000)/",
+            "CostCenterName": "Corporate Finance",
+            "CostCenterCategory": "F",
+            "CompanyCode": "1000",
+            "Currency": "USD"
+          }
+        }
+      }
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "created_for_agent": "cost-center-query-agent",
+    "mock_mode": true,
+    "deterministic": true,
+    "total_servers": 1,
+    "total_tools": 12,
+    "generated_from": ["translation.json"],
+    "generation_date": "2026-10-09"
+  }
+}

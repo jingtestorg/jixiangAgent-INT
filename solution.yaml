@@ -1,0 +1,11 @@
+apiVersion: solution.sap/v1
+kind: Solution
+
+metadata:
+  name: cost-center-query-b04f7
+  version: "1.0.0"
+  description: "AI agent enabling Finance Controllers to query SAP S/4HANA cost center data using natural language"
+
+assets:
+  - ref: ./assets/cost-center-query-agent/asset.yaml
+  - ref: ./assets/sap-s4-ce-costcenter-0001-mcp-server/asset.yaml
